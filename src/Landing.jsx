@@ -117,7 +117,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-            <section className="people06 cid-uTAqkzFtf9" id="testimonials-7-uTAqkzFtf9" style={ {backgroundColor:'#fefae6' }}>
+            {/* <section className="people06 cid-uTAqkzFtf9" id="testimonials-7-uTAqkzFtf9" style={ {backgroundColor:'#fefae6' }}>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="card col-12 col-md-12 col-lg-8">
@@ -137,7 +137,7 @@ const Landing = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <section className="header18 cid-uTAqkzF5nh mbr-fullscreen" data-bg-video="https://www.youtube.com/embed/AWz5guBHcI8?autoplay=1&amp;loop=1&amp;playlist=AWz5guBHcI8&amp;t=20&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;showinfo=0&amp;autohide=1&amp;allowfullscreen=true&amp;mode=transparent" id="video-5-uTAqkzF5nh">
                 <div className="mbr-background-video-preview" style={{ display: 'block', backgroundSize: 'cover', backgroundPosition: 'center center', backgroundImage: 'url("https://img.youtube.com/vi/AWz5guBHcI8/maxresdefault.jpg")' }}></div>
                 {/* <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', top: '0px', left: '0px' }}>
