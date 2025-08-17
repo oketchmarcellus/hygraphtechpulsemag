@@ -109,7 +109,7 @@ const Landing = () => {
                     <div className="grid-container">
                         <div className="grid-container-3" >
                             {allShowcaseMedia.map(media => (
-                                <div className="grid-item">
+                                <div className="grid-item" key={media.id}>
                                     <img src={media.url} className="animate__animated animate__delay-1s" />
                                 </div>
                             ))}   

@@ -16,9 +16,9 @@ export default defineConfig({
           }
           
           //second chunk: All assets will go to assets.js
-          if (id.includes('/src/assets/js/')) {
-            return 'assets'; // All assets will go to assets.js
-          }
+          // if (id.includes('/src/assets/js/')) {
+          //   return 'assets'; // All assets will go to assets.js
+          // }
         },
       },
     },
