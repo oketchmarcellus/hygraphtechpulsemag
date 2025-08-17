@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap');
+
+#root {
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.pulse-tagline h1{
+  color: #f0c808;
+  font-size: 5rem;
+}
+.pulse-tagline p {
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.mini-excerpt {
+    display: -webkit-box; /* Old browsers */
+    display: box;
+    -webkit-box-orient: vertical;
+    line-clamp: 4; /* Number of lines to show */
+    overflow: hidden; /* Changed from clip to hidden */
+    max-height: 6.5em; /* Adjust based on the line height */
+    line-height: 1.5em; /* Set your desired line height */
+    text-overflow: ellipsis; /* Add ellipsis */
+    white-space: normal; /* Allow wrapping */
+}
+a.text-black.fw-bold {
+    font-size: 1.5rem;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+    max-height: 3em;
+    min-height: 3em; /* Adjust based on the line height */
+    line-height: 1.5em;
+    text-overflow: ellipsis; 
+    white-space: normal; 
+}
+.mini-excerpt p{
+  min-height: 8.5rem;
+};
+
+.cid-uTAqkzFtf9 .card-text,.cid-uTAqkzF4zW .item-title {
+    font-size: 2.5rem;
+}
+
+.cid-uTAqkzEoyp .navbar-caption, li.nav-item a {
+  font-size: 2rem;
+}
+.mbr-section-btn .btn:not(.btn-form) {
+    border-radius: 100px;
+    padding: 1.25rem 2rem;
+    color: #fafafa;
+}
+
+.btn-white-outline, .btn-white-outline:active {
+    background-color: transparent !important;
+    border-color: #fafafa;
+    color: #fafafa;
+    padding: 1.25rem 2rem;
+    border-width: 2px;
+}
+
+.display-7 {
+    font-family: 'Source Serif 4', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+h1.mbr-section-title {
+    font-size: 3.5rem;
+}
+
+h3.mbr-section-title, h4.mbr-section-title {
+    font-size: 3rem;
+}
+
+h5.mbr-section-title {
+    font-size: 1.5rem !important;
+}
+#about-us-12-uTAqkzF1Ui p, .item-content p, #faq-3-uTAqkzGVOW p {
+    font-size: 1.3rem !important;
+}
+
+h6.card-title,h6.item-subtitle {
+    font-size: 2rem;
+}

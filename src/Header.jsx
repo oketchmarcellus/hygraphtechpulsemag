@@ -1,0 +1,47 @@
+const Header = ({ creatorName }) => {
+    return (
+        <>
+            <section className="menu menu2 cid-uTAqkzEoyp" id="menu-5-uTAqkzEoyp">
+                <nav className="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg navbar-short">
+                    <div className="container">
+                    <div className="navbar-brand">
+                        <span className="navbar-logo">
+                                    <a href="https://mobiri.se/">
+                                        <img src="/src/assets/savedsources/saved_resource.jpeg" style={{ height: '4.3rem' }} alt="TechWave Logo" />
+                                    </a>
+                                </span>
+                                <span className="navbar-caption-wrap">
+                        <a className="navbar-caption text-black display-4" href="https://mobiri.se/">TechPulse</a>
+                        </span>
+                    </div>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <div className="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                        <li className="nav-item">
+                            <a className="nav-link link text-black display-4" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#">News</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link link text-black display-4" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" aria-expanded="false">Products</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link link text-black display-4" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#">Contact</a>
+                        </li>
+                        </ul>
+                        <div className="navbar-buttons mbr-section-btn">
+                        <a className="btn btn-primary display-4" href="https://mobiri.se/">About</a>
+                        </div>
+                    </div>
+                    </div>
+                </nav>
+            </section>
+        </>
+    );
+}
+export default Header;
