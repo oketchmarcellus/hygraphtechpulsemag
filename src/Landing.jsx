@@ -116,6 +116,7 @@ const Landing = () => {
     const TeamSection = data.home?.mainContent.find(section => section.id === "cmedu0hmo0cls08ps1cw7r4j8") ?? [];
     const groundbreakingNews= data.home?.mainContent.find(section => section.id === "cmeglxofq1w6u07pn3w1474qm")?.breakingNewsData ?? [];
     const faqsSection=data.home?.mainContent.find(section => section.id === "cmegngobr1xej07pnprm0dkl2") ?? [];
+    const ContactSection= data.home?.mainContent.find(section => section.id === "cmegnjc3u1xa808ps0bidukjk") ?? [];
     const mainContent = data.home?.mainContent ?? [];
     const allRows = mainContent.flatMap(section => section.row ?? []);
     const allShowcaseMedia = allRows.flatMap(row => row.showcaseMedia ?? []);
@@ -124,7 +125,8 @@ const Landing = () => {
     const PartnerLogoImages= allPartnerLogos.map(partner => partner.logoImage) ?? [];
     const allteamMembers = TeamSection.teamMember ?? [];
     const groundbreakingNewsItems = groundbreakingNews.map(news => news.newsItem) ?? [];
-    const faqsContent= faqsSection.faqSectionContent ?? [];
+    const faqsContent = faqsSection.faqSectionContent ?? [];
+    const contactSectionContent = ContactSection.contacts ?? [];
     // const featuredProducts = data.techpulseWooProducts.filter(product => product.featured);
     const newsDataposts =data.home?.newsDataposts?.results.slice(0, 4) ?? [];
     const featuredProducts = data.home?.techPulseFeaturedProducts ?? [];
@@ -138,6 +140,7 @@ const Landing = () => {
     console.log('Partners Logos:', allPartnerLogos);
     console.log('Breaking News Items:', groundbreakingNewsItems);
     console.log('FAQs Content:', faqsContent);
+    console.log('Contact Section Content:', contactSectionContent);
     // console.log('team Members Images:', teamMemberImages);
     return (
         <>
@@ -415,57 +418,21 @@ const Landing = () => {
                 <div className="container">
                     <div className="col-12 mb-5 content-head">
                         <h3 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2 animate__animated animate__delay-1s animate__fadeIn">
-                            <strong>Your Questions Answered</strong>
+                            <strong>{faqsSection.faqSectionTitle}</strong>
                         </h3>   
                     </div>
                     <div className="row justify-content-center">
+                        {faqsContent.map(faqItem => (
                         <div className="col-12 col-lg-8">
                             <div className="item features-without-image col-12 active animate__animated animate__delay-1s animate__fadeIn">
                                 <div className="item-wrapper">
-                                    <h5 className="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5">
-                                        <strong>What makes your products special?</strong></h5>
-                                    <p className="mbr-text mbr-fonts-style mt-0 mb-3 display-7">
-                                        Our products are designed with cutting-edge technology to provide you with the best performance and user experience. We focus on innovation and quality.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="item features-without-image col-12 animate__animated animate__delay-1s animate__fadeIn">
-                                <div className="item-wrapper">
-                                    <h5 className="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5">
-                                        <strong>What is your return policy?</strong></h5>
-                                    <p className="mbr-text mbr-fonts-style mt-0 mb-3 display-7">
-                                        We offer a 30-day money-back guarantee on all our products. If you're not satisfied, simply return it for a full refund.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="item features-without-image col-12 animate__animated animate__delay-1s animate__fadeIn">
-                                <div className="item-wrapper">
-                                    <h5 className="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5">
-                                        <strong>Do you ship internationally?</strong></h5>
-                                    <p className="mbr-text mbr-fonts-style mt-0 mb-3 display-7">
-                                        Yes, we provide worldwide shipping. Delivery times may vary depending on your location.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="item features-without-image col-12 animate__animated animate__delay-1s animate__fadeIn">
-                                <div className="item-wrapper">
-                                    <h5 className="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5">
-                                        <strong>How can I get support?</strong></h5>
-                                    <p className="mbr-text mbr-fonts-style mt-0 mb-3 display-7">
-                                        You can contact our support team via email at support@techinnovate.com or through the contact form on our website. We typically respond within 24 hours.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="item features-without-image col-12 animate__animated animate__delay-1s animate__fadeIn">
-                                <div className="item-wrapper">
-                                    <h5 className="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5">
-                                        <strong>What payment methods do you accept?</strong></h5>
-                                    <p className="mbr-text mbr-fonts-style mt-0 mb-3 display-7">
-                                        We accept all major credit cards, PayPal, and bank transfers. Your payment information is secure and encrypted.
-                                    </p>
+                                    <div className="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5"
+                                        dangerouslySetInnerHTML={{ __html: faqItem.faqContent.html }}>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -513,60 +480,23 @@ const Landing = () => {
                         <div className="col-12 content-head">
                             <div className="mbr-section-head mb-5">
                                 <h3 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2 animate__animated animate__delay-1s animate__fadeIn">
-                                    <strong>Contact Us</strong>
+                                    <strong>{ContactSection.sectionTitle}</strong>
                                 </h3>
                             </div>
                         </div>
                     </div>
                     <div className="row">
+                        {contactSectionContent.map(contact => (
                         <div className="item features-without-image col-12 col-md-6 active animate__animated animate__delay-1s animate__fadeIn">
                             <div className="item-wrapper">
                                 <div className="text-wrapper">
-                                    <h6 className="card-title mbr-fonts-style mb-3 display-5">
-                                        <strong>Phone</strong>
-                                    </h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">
-                                        <a href="tel:+1 (555) 123-4567" className="text-black">+1 (555) 123-4567</a>
-                                    </p>
+                                    <div className="mb-3 display-5"
+                                        dangerouslySetInnerHTML={{ __html: contact.contactDetailsItem.html }}>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="item features-without-image col-12 col-md-6 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="text-wrapper">
-                                    <h6 className="card-title mbr-fonts-style mb-3 display-5">
-                                        <strong>Email</strong>
-                                    </h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">
-                                        <a href="mailto:info@techinnovate.com" className="text-black">info@techinnovate.com</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-without-image col-12 col-md-6 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="text-wrapper">
-                                    <h6 className="card-title mbr-fonts-style mb-3 display-5">
-                                        <strong>Location</strong>
-                                    </h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">
-                                        123 Innovation Drive, Tech City, CA 94000
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-without-image col-12 col-md-6 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="text-wrapper">
-                                    <h6 className="card-title mbr-fonts-style mb-3 display-5">
-                                        <strong>Hours</strong>
-                                    </h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">
-                                        Mon-Fri: 9 AM - 6 PM
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
