@@ -33,6 +33,28 @@ query QueryHomepage($homepageSlug: String) {
         }
         sectionTitle
       }
+        ... on Partner {
+            id
+            partnerSectionTitle
+            sectionForPartnerLogo {
+            id
+            logoImage {
+                url
+            }
+            }
+        }
+        ... on Team {
+        id
+        teamSectionTitle
+        teamMember {
+          id
+          jobTitle
+          memberName
+          memberImage {
+            url
+          }
+        }
+      }
     }
     techPulseFeaturedProducts {
       id
@@ -63,9 +85,16 @@ const Landing = () => {
     if (error) return <p>Error: {error.message}</p>;
     const heroTagline = data.home?.heroTagline?.html; // Get the post title for the generic page
     const sectionTitle = data.home?.mainContent.find(section => section.id === "cmeam2wqn1h5f07ppcu1ziooj")?.sectionTitle;
+    const statsSection = data.home?.mainContent.find(section => section.id === "cmean5utk1hj607ppc8jeeqhm") ?? [];
+    const PartnerSection = data.home?.mainContent.find(section => section.id === "cmedul8290dib07pnrap4yhdj") ?? [];
+    const TeamSection = data.home?.mainContent.find(section => section.id === "cmedu0hmo0cls08ps1cw7r4j8") ?? [];
     const mainContent = data.home?.mainContent ?? [];
     const allRows = mainContent.flatMap(section => section.row ?? []);
     const allShowcaseMedia = allRows.flatMap(row => row.showcaseMedia ?? []);
+    const allStats = statsSection.row ?? [];
+    const allPartnerLogos = PartnerSection.sectionForPartnerLogo ?? [];
+    const PartnerLogoImages= allPartnerLogos.map(partner => partner.logoImage) ?? [];
+    const allteamMembers = TeamSection.teamMember ?? [];
     // const featuredProducts = data.techpulseWooProducts.filter(product => product.featured);
     const newsDataposts =data.home?.newsDataposts?.results.slice(0, 4) ?? [];
     const featuredProducts = data.home?.techPulseFeaturedProducts ?? [];
@@ -73,6 +102,11 @@ const Landing = () => {
     // console.log('Featured Products:', featuredProducts);
     // console.log('Image URLs:', featuredProductImageUrls);
     // console.log('news network:', newsDataposts);
+    console.log('All Showcase:', allShowcaseMedia);
+    console.log('Stats Section:', statsSection);
+    console.log('All Stats:', allStats);
+    console.log('Partners Logos:', allPartnerLogos);
+    // console.log('team Members Images:', teamMemberImages);
     return (
         <>
             <section className="header18 cid-uTAqkzFez1 mbr-fullscreen" data-bg-video="https://www.youtube.com/embed/sQ22pm-xvrE?autoplay=1&amp;loop=1&amp;playlist=sQ22pm-xvrE&amp;t=20&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;showinfo=0&amp;autohide=1&amp;allowfullscreen=true&amp;mode=transparent" id="hero-16-uTAqkzFez1" style={{ alignItems: 'flex-end' }}>
@@ -109,7 +143,7 @@ const Landing = () => {
                     <div className="grid-container">
                         <div className="grid-container-3" >
                             {allShowcaseMedia.map(media => (
-                                <div className="grid-item">
+                                <div className="grid-item" key={media.id}>
                                     <img src={media.url} className="animate__animated animate__delay-1s" />
                                 </div>
                             ))}   
@@ -155,42 +189,18 @@ const Landing = () => {
             <section className="features10 cid-uTAqkzFCdx" id="metrics-2-uTAqkzFCdx">
                 <div className="container">
                     <div className="row justify-content-center">
+                        {allStats.map(stat => (
                         <div className="item features-without-image col-12 col-md-6 col-lg-4 animate__animated animate__delay-1s animate__fadeIn">
                             <div className="item-wrapper">
                                 <div className="card-box align-left">
                                     <p className="card-title mbr-fonts-style display-1 mb-3">
-                                        <strong>150+</strong>
+                                        <strong>{stat.stat}</strong>
                                     </p>
-                                    <p className="card-text mbr-fonts-style mb-3 display-7">
-                                        Global Reach
-                                    </p>
+                                    <p className="card-text mbr-fonts-style mb-3 display-7">{stat.statName}</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="item features-without-image col-12 col-md-6 col-lg-4 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="card-box align-left">
-                                    <p className="card-title mbr-fonts-style display-1 mb-3">
-                                        <strong>2.5M+</strong>
-                                    </p>
-                                    <p className="card-text mbr-fonts-style mb-3 display-7">
-                                        Active Users
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-without-image col-12 col-md-6 col-lg-4 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="card-box align-left">
-                                    <p className="card-title mbr-fonts-style display-1 mb-3">
-                                        <strong>50+</strong>
-                                    </p>
-                                    <p className="card-text mbr-fonts-style mb-3 display-7">
-                                        New Innovations
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -272,54 +282,21 @@ const Landing = () => {
                         <div className="col-12 content-head">
                             <div className="mbr-section-head">
                                 <h4 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2 animate__animated animate__delay-1s animate__fadeIn">
-                                    <strong>Trusted Collaborators</strong>
+                                    <strong>{PartnerSection.partnerSectionTitle}</strong>
                                 </h4>
                             </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 active animate__animated animate__delay-1s animate__fadeIn">
+                        {PartnerLogoImages.map(image => (
+                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 active animate__animated animate__delay-1s animate__fadeIn" key={image.id}>
                             <div className="item-wrapper">
                                 <div className="item-img">
-                                    <img src="/src/assets/savedsources/saved_resource(16).jpeg" data-slide-to="1" data-bs-slide-to="1"/>
+                                    <img src={image.url} data-slide-to="1" data-bs-slide-to="1"/>
                                 </div>
                             </div>
                         </div>
-                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img">
-                                    <img src="/src/assets/savedsources/saved_resource(17).jpeg" data-slide-to="2" data-bs-slide-to="2"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img">
-                                    <img src="/src/assets/savedsources/saved_resource(18).jpeg" data-slide-to="3" data-bs-slide-to="3"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img">
-                                    <img src="/src/assets/savedsources/saved_resource(19).jpeg" data-slide-to="4" data-bs-slide-to="4"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img">
-                                    <img src="/src/assets/savedsources/saved_resource(20).jpeg" data-slide-to="5" data-bs-slide-to="5"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-image col-12 col-md-6 col-sm-6 col-lg-2 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img">
-                                    <img src="/src/assets/savedsources/saved_resource(21).jpeg" data-slide-to="6" data-bs-slide-to="6"/>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -343,61 +320,26 @@ const Landing = () => {
                         <div className="col-12 content-head">
                             <div className="mbr-section-head mb-5">
                                 <h4 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2 animate__animated animate__delay-1s animate__fadeIn">
-                                    <strong>Our Innovators</strong>
+                                    <strong>{TeamSection.teamSectionTitle}</strong>
                                 </h4>
                             </div>
                         </div>
                     </div>
                     <div className="row">
+                        {allteamMembers.map(member => (
                         <div className="item features-image col-12 col-md-6 col-lg-3 animate__animated animate__delay-1s animate__fadeIn">
                             <div className="item-wrapper">
                                 <div className="item-img mb-3">
-                                    <img src="/src/assets/savedsources/saved_resource(22).jpeg"/>
+                                    <img src={member.memberImage?.url} alt="Team Member"/>
                                 </div>
                                 <div className="item-content align-left">
                                     <h6 className="item-subtitle mbr-fonts-style display-5">
-                                        <strong>Alex</strong></h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">Lead Developer</p>
+                                        <strong>{member.memberName}</strong></h6>
+                                    <p className="mbr-text mbr-fonts-style display-7">{member.jobTitle}</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="item features-image col-12 col-md-6 col-lg-3 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img mb-3">
-                                    <img src="/src/assets/savedsources/saved_resource(23).jpeg"/>
-                                </div>
-                                <div className="item-content align-left">
-                                    <h6 className="item-subtitle mbr-fonts-style display-5">
-                                        <strong>Sophia</strong></h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">Content Strategist</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item features-image col-12 col-md-6 col-lg-3 animate__animated animate__delay-1s animate__fadeIn">
-                            <div className="item-wrapper">
-                                <div className="item-img mb-3">
-                                    <img src="/src/assets/savedsources/saved_resource(24).jpeg"/>
-                                </div>
-                                <div className="item-content align-left">
-                                    <h6 className="item-subtitle mbr-fonts-style display-5">
-                                        <strong>Ethan</strong></h6>
-                                    <p className="mbr-text mbr-fonts-style display-7">Product Manager</p>
-                                </div>
-                            </div>
-                        </div>
-                <div className="item features-image col-12 col-md-6 col-lg-3 animate__animated animate__delay-1s animate__fadeIn">
-                    <div className="item-wrapper">
-                    <div className="item-img mb-3">
-                        <img src="/src/assets/savedsources/saved_resource(25).jpeg"/>
-                    </div>
-                    <div className="item-content align-left">
-                        <h6 className="item-subtitle mbr-fonts-style display-5">
-                        <strong>Olivia</strong>
-                        </h6>
-                        <p className="mbr-text mbr-fonts-style display-7">Marketing Lead</p>
-                    </div>
-                    </div>
-                </div>
+                        ))}
                     </div>
                 </div>
             </section>
