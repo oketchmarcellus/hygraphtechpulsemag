@@ -37,21 +37,47 @@ query QueryHomepage($homepageSlug: String) {
             id
             partnerSectionTitle
             sectionForPartnerLogo {
-            id
-            logoImage {
+             id
+             logoImage {
                 url
-            }
+             }
             }
         }
         ... on Team {
+            id
+            teamSectionTitle
+            teamMember {
+             id
+             jobTitle
+             memberName
+             memberImage {
+                url
+              }
+            }
+        }
+        ... on BreakingNewSection {
+            id
+            breakingNewsData {
+            id
+            newsItem
+            }
+        }
+        ... on Faq {
+            id
+            faqSectionTitle
+            faqSectionContent {
+                faqContent {
+                    html
+                }
+            }
+        }
+      ... on ContactSection {
         id
-        teamSectionTitle
-        teamMember {
+        sectionTitle
+        contacts {
           id
-          jobTitle
-          memberName
-          memberImage {
-            url
+          contactDetailsItem {
+            html
           }
         }
       }
@@ -88,6 +114,8 @@ const Landing = () => {
     const statsSection = data.home?.mainContent.find(section => section.id === "cmean5utk1hj607ppc8jeeqhm") ?? [];
     const PartnerSection = data.home?.mainContent.find(section => section.id === "cmedul8290dib07pnrap4yhdj") ?? [];
     const TeamSection = data.home?.mainContent.find(section => section.id === "cmedu0hmo0cls08ps1cw7r4j8") ?? [];
+    const groundbreakingNews= data.home?.mainContent.find(section => section.id === "cmeglxofq1w6u07pn3w1474qm")?.breakingNewsData ?? [];
+    const faqsSection=data.home?.mainContent.find(section => section.id === "cmegngobr1xej07pnprm0dkl2") ?? [];
     const mainContent = data.home?.mainContent ?? [];
     const allRows = mainContent.flatMap(section => section.row ?? []);
     const allShowcaseMedia = allRows.flatMap(row => row.showcaseMedia ?? []);
@@ -95,6 +123,8 @@ const Landing = () => {
     const allPartnerLogos = PartnerSection.sectionForPartnerLogo ?? [];
     const PartnerLogoImages= allPartnerLogos.map(partner => partner.logoImage) ?? [];
     const allteamMembers = TeamSection.teamMember ?? [];
+    const groundbreakingNewsItems = groundbreakingNews.map(news => news.newsItem) ?? [];
+    const faqsContent= faqsSection.faqSectionContent ?? [];
     // const featuredProducts = data.techpulseWooProducts.filter(product => product.featured);
     const newsDataposts =data.home?.newsDataposts?.results.slice(0, 4) ?? [];
     const featuredProducts = data.home?.techPulseFeaturedProducts ?? [];
@@ -106,6 +136,8 @@ const Landing = () => {
     console.log('Stats Section:', statsSection);
     console.log('All Stats:', allStats);
     console.log('Partners Logos:', allPartnerLogos);
+    console.log('Breaking News Items:', groundbreakingNewsItems);
+    console.log('FAQs Content:', faqsContent);
     // console.log('team Members Images:', teamMemberImages);
     return (
         <>
@@ -346,17 +378,10 @@ const Landing = () => {
             <section className="gallery10 cid-uTAqkzGG7D" id="features-69-uTAqkzGG7D">
                 <div className="container-fluid">
                     <div className="loop-container" style={{ position: 'relative', display: 'inline-flex', whiteSpace: 'nowrap', transform: 'translateX(-51.425%)' }}>
-                        <div className="item display-1 animate__animated animate__delay-1s animate__fadeIn" data-linewords="
-                        Groundbreaking Gadgets *
-                        Insightful Tech News *" data-direction="-1" data-speed="0.05">
-                        Groundbreaking Gadgets *
-                        Insightful Tech News *&nbsp;</div>
-                        <div className="item display-1 animate__animated animate__delay-1s animate__fadeIn" data-linewords="
-                        Groundbreaking Gadgets *
-                        Insightful Tech News *" data-direction="-1" data-speed="0.05" style={{ position: 'absolute', left: '100%'}}>
-                        Groundbreaking Gadgets *
-                        Insightful Tech News *&nbsp;
+                        {groundbreakingNewsItems.map((newsitem, index) => (
+                        <div className="item display-1 animate__animated animate__delay-1s animate__fadeIn" data-linewords={newsitem} data-direction="-1" data-speed="0.05" key={index}>{newsitem}
                         </div>
+                        ))}
                     </div>   
                 </div>
             </section>
