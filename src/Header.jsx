@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const Header = ({ creatorName }) => {
     return (
         <>
@@ -25,13 +27,13 @@ const Header = ({ creatorName }) => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav nav-dropdown" data-app-modern-menu="true">
                         <li className="nav-item">
-                            <a className="nav-link link text-black display-4" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#">News</a>
+                            <Link className="nav-link link text-black display-4" to="/" aria-expanded="false">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link link text-black display-4" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" aria-expanded="false">Products</a>
+                            <Link className="nav-link link text-black display-4" to="/shop" aria-expanded="false">Products</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link link text-black display-4" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#">Contact</a>
+                            <Link className="nav-link link text-black display-4" to="/blog" aria-expanded="false">Blog</Link>
                         </li>
                         </ul>
                         <div className="navbar-buttons mbr-section-btn">

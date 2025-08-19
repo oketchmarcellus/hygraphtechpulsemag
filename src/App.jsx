@@ -3,7 +3,8 @@ import { useQuery, gql } from '@apollo/client'
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom'
 import Header from './Header'
 import Landing from './Landing'
-//import Postpage from './Postpage'
+import Shop from './Shop'
+import Blog from './Blog'
 import Footer from './Footer'
 import './App.css'
 
@@ -46,10 +47,14 @@ function App() {
                 </>
               }
             />
-            {/* <Route path="/:postSlug" element={
-              <Postpage />
+            <Route path="/:shopPageSlug" element={
+              <Shop />
               }
-            /> */}
+            />
+            <Route path="/:blogPageSlug" element={
+              <Blog />
+              }
+            />
           </Routes>
         </div>
         <Footer />

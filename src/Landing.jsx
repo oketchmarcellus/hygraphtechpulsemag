@@ -255,7 +255,7 @@ const Landing = () => {
                         <div className="item features-image col-12 col-md-6 col-lg-3 active animate__animated animate__delay-1s animate__fadeIn">
                             <div className="item-wrapper">
                                 <div className="item-img mb-3">
-                                    <img src={newsdata.image_url} />
+                                    <img src={newsdata.image_url || '/src/assets/savedsources/saved_resource(11).jpeg' } />
                                 </div>
                                 <div className="item-content align-left">
                                     <h6 className="item-subtitle mbr-fonts-style mb-3 display-5">
@@ -290,7 +290,7 @@ const Landing = () => {
                                 <div className="item-wrapper">
                                     <div className="item-img">
                                         {/* Use product.image if available, fallback to a placeholder */}
-                                            <img src={featuredProduct.images[0]?.src} alt={featuredProduct.name ?? ""} />
+                                            <img src={featuredProduct.images[0]?.src || '/src/assets/savedsources/saved_resource(11).jpeg'} alt={featuredProduct.name ?? ""} />
                                     </div>
                                     <div className="item-content">
                                         <h5 className="item-title mbr-fonts-style display-5"><strong>{featuredProduct.name}</strong>
