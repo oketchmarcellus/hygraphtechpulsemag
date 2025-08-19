@@ -398,7 +398,7 @@ const Landing = () => {
                     </div>   
                 </div>
             </section>
-            <section className="image02 cid-uTAqkzGgZx mbr-fullscreen mbr-parallax-background" id="image-13-uTAqkzGgZx" style={{ position: 'relative', zIndex: 0, backgroundImage: 'none' }}>
+            {/* <section className="image02 cid-uTAqkzGgZx mbr-fullscreen mbr-parallax-background" id="image-13-uTAqkzGgZx" style={{ position: 'relative', zIndex: 0, backgroundImage: 'none' }}>
                 <div className="container">
                     <div className="row"></div>
                 </div>
@@ -406,7 +406,7 @@ const Landing = () => {
         zIndex: -100 }}>
                     <div style={{ backgroundPosition: '50% 50%',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',backgroundImage: 'url("https://proxy.electricblaze.com/?u=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1496065187959-7f07b8353c55%3Fixid%3DM3w0Mzc5fDB8MXxzZWFyY2h8MjB8fHRlY2hub2xvZ3l8ZW58MHwwfHx8MTc1NDkwMDk2NXww%26ixlib%3Drb-4.1.0%26auto%3Dformat%26fit%3Dcrop%26w%3D1200%26q%3D80&amp;e=1759968000&amp;s=0j99WagqEzhpQnGE2q2yBKyiH2dPkwHIS5SlXijm_z4")',position: 'absolute',top: '0px',left: '0px',width: '1520.8px',height: '729.76px',overflow: 'hidden',pointerEvents: 'none',transformStyle: 'preserve-3d',backfaceVisibility: 'hidden',willChange: 'transform, opacity',marginTop: '0.119989px',transform: 'translate3d(0px, -261.87px, 0px)'}}></div>
                 </div>
-            </section>
+            </section> */}
             <section className="header09 startm5 cid-uTAqkzG57Q" id="call-to-action-2-uTAqkzG57Q">
                 <div className="container-fluid">
                     <div className="row">
@@ -446,7 +446,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-            <section className="social05 cid-uTAqkzGd6n" id="follow-us-2-uTAqkzGd6n">
+            {/* <section className="social05 cid-uTAqkzGd6n" id="follow-us-2-uTAqkzGd6n">
                 <div className="container">
                     <div className="row">
                         <h3 className="mbr-section-title align-center mb-5 mbr-fonts-style display-2 animate__animated animate__delay-1s animate__fadeIn">
@@ -483,7 +483,7 @@ const Landing = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <section className="contacts01 cid-uTAqkzGCDG" id="contacts-1-uTAqkzGCDG" style={ {backgroundColor:'#fefae6' }}>
                 <div className="container">
                     <div className="row justify-content-center">
