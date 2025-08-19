@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import placholderImage from './assets/savedsources/saved_resource(11).jpeg';
 
 const GET_POST_DATA = gql`
 query ShopPage($shopPageSlug:String) {
@@ -58,7 +59,7 @@ const Shop = () => {
                                 <div className="item-wrapper">
                                     <div className="item-img">
                                         {/* Use product.image if available, fallback to a placeholder */}
-                                            <img src={showproduct.images[0]?.src || '/src/assets/savedsources/saved_resource(11).jpeg'} alt={showproduct.name ?? ""} />
+                                            <img src={showproduct.images[0]?.src || placholderImage } alt={showproduct.name ?? ""} />
                                     </div>
                                     <div className="item-content">
                                         <h5 className="item-title mbr-fonts-style display-5"><strong>{showproduct.name}</strong>

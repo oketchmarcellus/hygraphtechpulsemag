@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import placholderImage from './assets/savedsources/saved_resource(11).jpeg';
 
 const GET_POST_DATA = gql`
 query AllWPblogPosts($blogPageSlug: String) {
@@ -42,7 +43,7 @@ const Blog = () => {
                         <div className="item features-image col-12 col-md-6 col-lg-3 active animate__animated animate__delay-1s animate__fadeIn">
                             <div className="item-wrapper">
                                 <div className="item-img mb-3">
-                                    <img src={wpost.guid || '/src/assets/savedsources/saved_resource(11).jpeg' } />
+                                    <img src={wpost.guid || placholderImage } />
                                 </div>
                                 <div className="item-content align-left">
                                     <h6 className="item-subtitle mbr-fonts-style mb-3 display-5">

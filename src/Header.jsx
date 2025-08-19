@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from './assets/savedsources/saved_resource.jpeg';
 const Header = ({ creatorName }) => {
     return (
         <>
@@ -9,7 +10,7 @@ const Header = ({ creatorName }) => {
                     <div className="navbar-brand">
                         <span className="navbar-logo">
                                     <a href="https://mobiri.se/">
-                                        <img src="/src/assets/savedsources/saved_resource.jpeg" style={{ height: '4.3rem' }} alt="TechWave Logo" />
+                                        <img src={logo} style={{ height: '4.3rem' }} alt="TechWave Logo" />
                                     </a>
                                 </span>
                                 <span className="navbar-caption-wrap">
