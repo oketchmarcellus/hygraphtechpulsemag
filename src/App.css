@@ -129,3 +129,7 @@ h5.mbr-card-title {
 .shop {
   margin-top:5rem;
 }
+
+a.header-menu-item.mbr-fonts-style.display-5.animate__animated.animate__delay-1s.animate__fadeIn {
+    color: white;
+}

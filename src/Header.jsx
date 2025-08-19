@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './assets/savedsources/saved_resource.jpeg';
-const Header = ({ creatorName }) => {
+const Header = () => {
     return (
         <>
             <section className="menu menu2 cid-uTAqkzEoyp" id="menu-5-uTAqkzEoyp">

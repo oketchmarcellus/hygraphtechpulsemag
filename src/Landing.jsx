@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import placholderImage from './assets/savedsources/saved_resource(11).jpeg';

@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 const Footer = ({  }) => {
     return (
         <>
@@ -6,15 +9,16 @@ const Footer = ({  }) => {
                     <div className="row">
                         <div className="row-links">
                             <ul className="header-menu">
-                            <li className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn">
-                                <a href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" className="text-white animate__animated animate__delay-1s animate__fadeIn">About</a>
-                            </li><li className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn">
-                                <a href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" className="text-white animate__animated animate__delay-1s animate__fadeIn">Blog</a>
-                            </li><li className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn">
-                                <a href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" className="text-white animate__animated animate__delay-1s animate__fadeIn">Products</a>
-                            </li><li className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn">
-                                <a href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" className="text-white animate__animated animate__delay-1s animate__fadeIn">Contact</a>
-                            </li></ul>
+                                <li className="nav-item">
+                                    <Link className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn" to="/" aria-expanded="false">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn" to="/shop" aria-expanded="false">Products</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="header-menu-item mbr-fonts-style display-5 animate__animated animate__delay-1s animate__fadeIn" to="/blog" aria-expanded="false">Blog</Link>
+                                </li>
+                            </ul>
                         </div>
 
                         <div className="col-12 mt-4">

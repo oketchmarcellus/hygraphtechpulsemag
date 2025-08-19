@@ -1,19 +1,18 @@
-import { Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import placholderImage from './assets/savedsources/saved_resource(11).jpeg';
 
 const GET_POST_DATA = gql`
-query AllWPblogPosts($blogPageSlug: String) {
-  blog(where: {blogPageSlug: $blogPageSlug}) {
-    blogPageSlug
+query BlogPage($blogPageSlug: String) {
+  blog(where: {slug: $blogPageSlug}) {
+    slug
     blogPageTitle
     techPulseBlogPosts
   }
 }
 `;
 
-const Blog = () => {
+const TechBlog = () => {
     const { blogPageSlug = 'blog' } = useParams(); // Get postSlug from URL
     const { loading, error, data } = useQuery(GET_POST_DATA, {
         variables: { blogPageSlug }, // Use the blogpageSlug variable
@@ -23,11 +22,13 @@ const Blog = () => {
     if (error) return <p>Error: {error.message}</p>;
     const blogPageTitle=data?.blog.blogPageTitle;
     const blogPageContent = data?.blog.techPulseBlogPosts ?? [];
+    const blogPostImages = blogPageContent.images;
     // const blogPostItems = blogPageContent.listedTechPulseProducts ?? [];
     console.log('Blog Page Content:', blogPageContent);
+    console.log('Blog Page images:', blogPostImages);
      return (
         <>
-            <section className="features03 cid-uTAqkzFWbz" id="news-1-uTAqkzFWbz">
+            <section className="features03 cid-uTAqkzFWbz blog" id="news-1-uTAqkzFWbz">
                 <div className="container-fluid">
                     <div className="row justify-content-center mb-5">
                         <div className="col-12 content-head">
@@ -39,18 +40,18 @@ const Blog = () => {
                         </div>
                     </div>
                     <div className="row">
-                        {blogPageContent.map((wpost) => (
-                        <div className="item features-image col-12 col-md-6 col-lg-3 active animate__animated animate__delay-1s animate__fadeIn">
+                        {blogPageContent.map(wordpost => (
+                        <div className="item features-image col-12 col-md-6 col-lg-3 active animate__animated animate__delay-1s animate__fadeIn" key={wordpost.id}>
                             <div className="item-wrapper">
                                 <div className="item-img mb-3">
-                                    <img src={wpost.guid || placholderImage } />
+                                    <img src={wordpost.images?.src || placholderImage } />
                                 </div>
                                 <div className="item-content align-left">
                                     <h6 className="item-subtitle mbr-fonts-style mb-3 display-5">
-                                        <strong><a className="text-black fw-bold" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#">{newsdata.title}</a></strong>
+                                        <strong><a className="text-black fw-bold" href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#">{wordpost.title.rendered}</a></strong>
                                     </h6>
-                                    <p className="mbr-text mbr-fonts-style mb-3 display-7">{wpost.date}</p>
-                                    <p className="mbr-text mbr-fonts-style mb-3 display-7 mini-excerpt">{wpost.excerpt}</p>
+                                    <p className="mbr-text mbr-fonts-style mb-3 display-7">{wordpost.date}</p>
+                                    <p className="mbr-text mbr-fonts-style mb-3 display-7 mini-excerpt" dangerouslySetInnerHTML={{ __html: wordpost.excerpt.rendered }}/>
                                     <div className="mbr-section-btn item-footer"><a href="https://ai-builder.mobirise.com/pages/iUc7ROw3Kwx452_MyEyid#" className="btn item-btn btn-primary display-7">More</a></div>
                                 </div>
                             </div>
@@ -62,4 +63,4 @@ const Blog = () => {
         </>
     );
 }
-export default Blog;
+export default TechBlog;

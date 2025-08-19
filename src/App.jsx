@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-
 import Header from './Header'
 import Landing from './Landing'
 import Shop from './Shop'
-import Blog from './Blog'
+import TechBlog from './TechBlog'
 import Footer from './Footer'
 import './App.css'
 
@@ -48,11 +48,15 @@ function App() {
               }
             />
             <Route path="/:shopPageSlug" element={
-              <Shop />
+                <>
+                  <Shop />
+                </>
               }
             />
-            <Route path="/:blogPageSlug" element={
-              <Blog />
+            <Route path="/blog" element={
+                <>
+                  <TechBlog />
+                </>
               }
             />
           </Routes>
