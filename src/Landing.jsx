@@ -144,14 +144,24 @@ const Landing = () => {
     // console.log('team Members Images:', teamMemberImages);
     return (
         <>
-            <section className="header18 cid-uTAqkzFez1 mbr-fullscreen" data-bg-video="https://www.youtube.com/embed/sQ22pm-xvrE?autoplay=1&amp;loop=1&amp;playlist=sQ22pm-xvrE&amp;t=20&amp;mute=1&amp;playsinline=1&amp;controls=0&amp;showinfo=0&amp;autohide=1&amp;allowfullscreen=true&amp;mode=transparent" id="hero-16-uTAqkzFez1" style={{ alignItems: 'flex-end' }}>
+            <section className="header18 cid-uTAqkzFez1 mbr-fullscreen" id="hero-16-uTAqkzFez1" style={{ alignItems: 'flex-end' }}>
                 <div className="mbr-background-video-preview" style={{ display: 'block', backgroundSize: 'cover', backgroundPosition: 'center center', backgroundImage: 'url("https://img.youtube.com/vi/sQ22pm-xvrE/sddefault.jpg")' }}></div>
+                
                 <div style={{ overflow: 'hidden', position: 'absolute', width: '100%', height: '100%', top: '0px', left: '0px' }}>
                     <div style={{ background: 'rgb(0, 0, 0)', inset: '0px' }}>
-                        <div className="mbr-video-foreground" style={{ position: 'absolute', top: '0px', left: '0px', width: '100%', height: '100%', pointerEvents: 'none' }}></div>
+                        <iframe
+                            className="mbr-video-foreground"
+                            src="https://www.youtube.com/embed/sQ22pm-xvrE?autoplay=1&loop=1&playlist=sQ22pm-xvrE&mute=1&playsinline=1&controls=0&showinfo=0&autohide=1"
+                            frameBorder="0"
+                            allow="autoplay; encrypted-media; fullscreen"
+                            style={{ position: 'absolute', top: '0px', left: '0px', width: '100%', height: '100%', pointerEvents: 'none' }}
+                            title="Video"
+                        ></iframe>
                     </div>
                 </div>
+                
                 <div className="mbr-overlay" style={{ opacity: 0.3, backgroundColor: 'rgb(0, 0, 0)' }}></div>
+                
                 <div className="container-fluid">
                     <div className="row">
                         <div className="content-wrap col-12 col-md-10">
